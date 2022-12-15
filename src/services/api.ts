@@ -7,17 +7,16 @@ const REST_URL = "https://virtserver.swaggerhub.com/LOL11999333/Planner/1.0.0/"
     baseURL: REST_URL
 })
 
-
 export const servicesAPI = {
     plannerItemsAPI:{
         findAllForecastPlanerItems(){
             return instance.get<PlanItems[]>('findAllForecastPlanerItems').then(value=>value.data)
         },
-        deleteForecastPlannerItemById(id:number){
+        deleteForecastPlannerItemById(id:string){
             return instance.get<any>(`deleteForecastPlannerItemById?itemId=${id}`).then(value=>value.data)
         },
-        addNewForecastPlannerItem(param:{dateOfSend:string,forecastStart:string,forecastEnd:string}){
-            return instance.get<any>(`addNewForecastPlannerItem?dateOfSend=${param.dateOfSend}&${param.forecastStart}&${param.forecastEnd}`).then(value=>value)
+        addNewForecastPlannerItem(dateOfSend:string,forecastStart:string,forecastEnd:string){
+            return instance.get<any>(`addNewForecastPlannerItem?dateOfSend=${dateOfSend}&forecastStart=${forecastStart}&forecastEnd=${forecastEnd}`).then(value=>value)
         },
     }
 }
