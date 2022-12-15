@@ -65,14 +65,17 @@ function PlanPage() {
         {
             title: 'ID',
             dataIndex: 'id',
+            key:"id"
         },
         {
             title: 'Дата отправки',
             dataIndex: 'dateOfSend',
+            key:"dateOfSend"
         },
         {
             title: 'Прогноз на период',
             dataIndex: 'range',
+            key:"range",
             render:(text,record)=>{
                 return <> {record.forecastStart} - {record.forecastEnd} </>
             }
@@ -103,6 +106,7 @@ function PlanPage() {
                     loading={isLoading}
                     columns={columns}
                     dataSource={planItems}
+                    rowKey="id"
                 />
                 <Title level={4}> Добавить новую </Title>
                 <Form
@@ -133,8 +137,6 @@ function PlanPage() {
                         </Button>
                     </Form.Item>
                 </Form>
-
-
             </Card>
         </Content>
     )
